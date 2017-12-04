@@ -1,5 +1,5 @@
 {
-  "builder": [
+  "builders": [
     {
       "type": "virtualbox-iso",
       "guest_os_type": "Linux_64",
