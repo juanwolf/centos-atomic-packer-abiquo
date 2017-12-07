@@ -21,16 +21,16 @@
     [
       {
         "type": "abiquo",
-        "api_url": "https://your.abiquo.instance/api",
-        "api_username": "admin",
-        "api_password": "xabiquo",
-        "datacenter": "Abiquo-DC",
+        "api_url": "{{ env `abiquo_url`}}",
+        "app_key": "{{user `abiquo_key`}}",
+        "app_secret": "{{user `abiquo_secret`}}",
+        "datacenter": "{{user `abiquo_datacenter`}}",
         "template_name": "CentOS Atomic 20171109",
-        "cpu": "1",
-        "description": "A packer test to build CentOS atomic VMs",
+        "description": "CentOS atomic, container optimized centos (2017-11-09)",
         "eth_driver": "E1000",
-        "ram_mb": "1024",
-        "icon_url": "{{user `icon`}}"
+        "cpu": "1",
+        "ram_mb": "2048",
+        "icon_url": "http://www.projectatomic.io/images/logo.svg"
       }
     ]
   ]
