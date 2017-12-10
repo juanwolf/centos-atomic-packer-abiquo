@@ -1,6 +1,6 @@
 {
-    "abiquo_url": "",
-    "abiquo_key": "",
-    "abiquo_secret": "",
+    "abiquo_url": "https://portal.cloud.claranet.com/api",
+    "abiquo_username": "",
+    "abiquo_password": "",
     "abiquo_datacenter": ""
 }

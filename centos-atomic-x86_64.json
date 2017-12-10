@@ -1,39 +1,38 @@
 {
-  "builders": [
-    {
-      "type": "virtualbox-iso",
-      "guest_os_type": "Linux_64",
-      "iso_url": "http://cloud.centos.org/centos/7/atomic/images/CentOS-Atomic-Host-7-Installer.iso",
-      "iso_checksum": "eace54c75f6ded4a352c45dd113bfdd2a3dbd4959db89c2a62736b9934413e9b",
-      "iso_checksum_type": "sha256",
-      "ssh_username": "root",
-      "ssh_password": "atomic*",
-      "disk_size": "20000",
-      "ssh_wait_timeout": "10000s",
-      "http_directory": "http",
-      "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
-      "boot_command": [
-          "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/atomic-ks.cfg<enter><wait>"
-      ]
-    }
-  ],
-  "post-processors": [
-    [
-      {
-        "type": "abiquo",
-        "api_url": "{{ env `abiquo_url`}}",
-        "app_key": "{{user `abiquo_key`}}",
-        "app_secret": "{{user `abiquo_secret`}}",
-        "datacenter": "{{user `abiquo_datacenter`}}",
-        "template_name": "CentOS Atomic 20171109",
-        "description": "CentOS atomic, container optimized centos (2017-11-09)",
-        "eth_driver": "E1000",
-        "cpu": "1",
-        "ram_mb": "2048",
-        "icon_url": "http://www.projectatomic.io/images/logo.svg"
-      }
+    "builders": [
+        {
+            "type": "virtualbox-iso",
+            "guest_os_type": "Linux_64",
+            "iso_url": "http://cloud.centos.org/centos/7/atomic/images/CentOS-Atomic-Host-7-Installer.iso",
+            "iso_checksum": "eace54c75f6ded4a352c45dd113bfdd2a3dbd4959db89c2a62736b9934413e9b",
+            "iso_checksum_type": "sha256",
+            "ssh_username": "root",
+            "ssh_password": "atomic*",
+            "disk_size": "20000",
+            "ssh_wait_timeout": "10000s",
+            "http_directory": "http",
+            "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
+            "boot_command": [
+                "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/atomic-ks.cfg<enter><wait>"
+            ]
+        }
+    ],
+
+    "post-processors": [
+        {
+            "type": "abiquo",
+            "api_url": "{{user `abiquo_url`}}",
+            "api_username": "{{user `abiquo_username`}}",
+            "api_password": "{{ user `abiquo_password`}}",
+            "datacenter": "{{user `abiquo_datacenter`}}",
+            "template_name": "CentOS Atomic 20171109",
+            "description": "CentOS atomic, container optimized centos (2017-11-09)",
+            "eth_driver": "E1000",
+            "cpu": "1",
+            "ram_mb": "2048",
+            "icon_url": "http://www.projectatomic.io/images/logo.svg"
+        }
     ]
-  ]
 
 
 }
